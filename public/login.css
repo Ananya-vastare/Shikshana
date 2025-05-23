@@ -1,0 +1,158 @@
+/* Full screen height and no margin */
+html,
+body {
+    margin: 0;
+    height: 100%;
+    /* Ensure full height */
+    font-family: "Merriweather", serif;
+    overflow: hidden;
+}
+
+/* Make the spline viewer take the whole screen */
+spline-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    z-index: -1;
+    /* Send it to the background */
+    background-color: black;
+    margin-top: -40px;
+}
+
+/* Header styling */
+.site-header {
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Flex container */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+}
+
+/* Header styling */
+.site-header {
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+
+/* Centered title */
+.site-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 32px;
+}
+
+/* Nav to the right */
+.nav-links {
+    margin-left: auto;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.nav-links a:hover {
+    color: #4dabf7;
+}
+
+/* Form box style */
+.form-container {
+    position: fixed;
+    top: 25%;
+    left: 35%;
+    background-color: #f0f0f0;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto !important;
+    /* Centers the box horizontally */
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.input-group input:focus {
+    border-color: #5a67d8;
+    outline: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #5a67d8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #4c51bf;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.signup-link a {
+    color: #5a67d8;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}

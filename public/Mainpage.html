@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goal Roadmap Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/lucide-static@0.262.0/icons.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=DM+Serif+Text:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Gidole&family=Kaushan+Script&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        body,
+        html {
+            background-color: black;
+            color: white;
+        }
+
+
+
+        #goalInput {
+            color: black;
+        }
+
+        #roadmapContainer {
+            color: black;
+        }
+    </style>
+</head>
+<h1 style=" color:white;text-align:center; font-size:2rem;">SHIKSHANA</h1>
+
+<body class="bg-black-50 p-6">
+    <br />
+    <br />
+    <br />
+    <div class="max-w-3xl mx-auto border border-white">
+        <div class="bg-black rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-1 text-white">Goal Roadmap Generator</h2>
+            <p class="text-gray-600 mb-4">Turn your goals into actionable steps</p>
+
+            <div class="space-y-4">
+                <div>
+                    <input id="goalInput" type="text"
+                        placeholder="Enter your goal (e.g. 'Learn React', 'Full Stack Developer')"
+                        class="w-full border border-gray-300 rounded px-3 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <p id="errorMsg" class="text-sm text-red-500 mt-1 hidden">Please enter a goal</p>
+                </div>
+                <button onclick="generateRoadmap()"
+                    class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    Generate Roadmap
+                </button>
+            </div>
+        </div>
+
+        <div id="roadmapContainer" class="bg-white rounded-lg shadow-md p-6 hidden">
+            <h3 id="roadmapTitle" class="text-xl font-bold mb-6"></h3>
+            <div id="roadmapSteps" class="space-y-6"></div>
+            <div id="youtubeLinks" class="space-y-3 mt-6"></div>
+        </div>
+    </div>
+
+    <script src="Mainpage.js">
+
+    </script>
+</body>
+
+</html>

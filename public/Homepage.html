@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focus on your goal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: "Merriweather", serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+      overflow: hidden;
+    }
+
+    .site-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      font-size: 32px;
+      z-index: 10;
+    }
+
+    nav {
+      margin-left: auto;
+    }
+
+    header {
+      z-index: 20;
+    }
+
+    .model {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 600px;
+      height: 710px;
+      margin-top: 40px;
+      margin-right: -30px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .image-container {
+      display: none;
+    }
+
+    .line {
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 30%;
+      transform: translate(-50%, -50%) scale(0.95);
+      transition: opacity 1s ease, transform 1s ease;
+      font-size: 1.5rem;
+      text-align: center;
+      max-width: 80%;
+      padding: 2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      color: #fff;
+    }
+
+    .line h2 {
+      font-size: 2.2rem;
+      background: linear-gradient(90deg, #f9d423, #ff4e50);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .line p,
+    .line ol {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .line li {
+      margin: 0.5rem 0;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="bg-black shadow-md w-full">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <nav class="flex space-x-6">
+        <!-- Home Link -->
+        <a href="#" class="text-white hover:text-blue-400 font-medium text-xl transition-colors duration-300">Home</a>
+        <!-- Login Link -->
+        <a href="login.html"
+          class="text-white hover:text-blue-400 font-medium text-xl transition-colors duration-300">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content Lines -->
+  <div id="line1" class="line">
+    <h2>Shikshana - Mapped Journey</h2><br />
+    <p>&nbsp;&nbsp;Shikshana helps you plan and track your journey toward your goals with a clear, personalized path and
+      helpful
+      reminders. Stay on course and achieve milestones with ease!</p>
+  </div>
+
+  <div id="line2" class="line">
+    <h2>Shikshana - Mapped Journey</h2><br />
+    <ol>
+      <li>Unleash Your Potential with Shikshana</li>
+      <li>Increased clarity</li>
+      <li>Enhanced productivity</li>
+      <li>Improved motivation</li>
+      <li>Accelerated Growth</li>
+    </ol>
+  </div>
+
+  <div id="line3" class="line">
+    <h2>Shikshana - Mapped Journey</h2>
+    <ol>
+      <li>Your Goal Achievement Companion</li>
+      <li>Comprehensive platform</li>
+      <li>Data-driven Insights</li>
+      <li>Step by Step Guidance</li>
+    </ol>
+  </div>
+
+  <!-- 3D Model -->
+  <div class="model">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.92/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/02nXACAXgtN6Qccq/scene.splinecode"></spline-viewer>
+  </div>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; Shikshana@2025</p>
+  </footer>
+
+  <!-- JavaScript for Scrolling Effect -->
+  <script>
+    const lines = [
+      document.getElementById('line1'),
+      document.getElementById('line2'),
+      document.getElementById('line3')
+    ];
+
+    let current = 0;
+
+    function simulateScrollEffect() {
+      // Hide all lines first
+      lines.forEach(line => line.classList.remove('show'));
+
+      // Show the current line
+      lines[current].classList.add('show');
+
+      // Move to the next line, loop back to 0 if at the end
+      current = (current + 1) % lines.length;
+
+      // Repeat after 3 seconds
+      setTimeout(simulateScrollEffect, 3000);
+    }
+
+    simulateScrollEffect();
+  </script>
+
+</body>
+
+</html>

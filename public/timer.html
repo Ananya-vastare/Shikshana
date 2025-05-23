@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page with Time Limit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=DM+Serif+Text:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Gidole&family=Kaushan+Script&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: black;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            flex-direction: column;
+            /* Ensures content is displayed in columns */
+        }
+
+        h1 {
+            margin-top: -180px;
+            margin-bottom: 150px;
+        }
+
+        .container {
+            width: 320px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin: 0 0 20px;
+            color: #444;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Merri-weather', sans-serif;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin: 15px 0 5px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="color:white; text-align:center; font-size:2rem;">SHIKSHANA</h1>
+
+    <div class="container">
+        <h2>Set your learning time</h2>
+        <form id="timeForm">
+            <!-- Time input field -->
+            <select id="timeLimit">
+                <option value="1800000">30 minutes</option>
+                <option value="3600000">1 hour</option>
+                <option value="5400000">1 hour 30 minutes</option>
+                <option value="7200000">2 hours</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        window.onload = function () {
+            if (sessionStorage.getItem("loggedIn") !== "true") {
+                alert("You are not logged in.");
+                window.location.href = "login.html";  // Redirect to login page
+            }
+        };
+
+        // Ensure the DOM is fully loaded before accessing form
+        document.addEventListener("DOMContentLoaded", function () {
+            const timeForm = document.getElementById("timeForm");
+
+            if (timeForm) {
+                timeForm.addEventListener("submit", function (event) {
+                    event.preventDefault(); // Prevent form submission
+
+                    const timeValue = document.getElementById("timeLimit").value;
+                    const alertTime = Date.now() + parseInt(timeValue); // Calculate alert time
+
+                    localStorage.setItem("alertTime", alertTime); // Store in localStorage
+
+                    window.location.href = "mainpage.html"; // Redirect to main page
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

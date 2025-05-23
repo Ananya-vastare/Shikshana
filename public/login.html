@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.92/build/spline-viewer.js"></script>
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=DM+Serif+Text:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Gidole&family=Kaushan+Script&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-image: url('Backgroundimage.png');
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title">SIKSHANA</h1>
+            <nav class="nav-links">
+                <a href="Homepage.html">Home</a>
+                <a href="#">Login</a>
+            </nav>
+        </div>
+    </header>
+
+
+    </header>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.92/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/DNq0BxOjPlHjmwxd/scene.splinecode"></spline-viewer>
+    <div class="form-container">
+        <form id="login-form">
+            <h2>Sign In</h2>
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <div>
+                <button type="submit" class="submit-btn">Sign In</button>
+            </div>
+
+            <div class="signup-link">
+                Don't have an account? <a href="javascript:void(0);" onclick="showSignUp()">Sign up</a>
+            </div>
+            <br />
+        </form>
+
+        <!-- Sign Up Form -->
+        <div id="signup-form" class="signup-form" style="display: none;">
+            <h2>Sign Up</h2>
+            <form id="signup">
+                <div class="input-group">
+                    <label for="new-username">Username</label>
+                    <input type="text" id="new-username" placeholder="Enter Username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="new-email">Email</label>
+                    <input type="email" id="new-email" placeholder="Enter Email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="new-password">Password</label>
+                    <input type="password" id="new-password" placeholder="••••••••" required>
+                </div>
+
+                <div>
+                    <button type="submit" class="submit-btn">Sign Up</button>
+                </div>
+
+                <div class="signup-link">
+                    Already have an account? <a href="javascript:void(0);" onclick="showSignIn()">Sign In</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div id="forgot-password-form" class="forgot-password-form" style="display: none;">
+            <h2>Forgot Password</h2>
+            <form id="forgot-password">
+                <div class="input-group">
+                    <label for="forgot-email">Enter your email</label>
+                    <input type="email" id="forgot-email" placeholder="Email" required>
+                </div>
+
+                <div>
+                    <button type="submit" class="submit-btn">Reset Password</button>
+                </div>
+
+                <div class="signup-link">
+                    Remembered your password? <a href="javascript:void(0);" onclick="showSignIn()">Sign In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to show the Sign Up form
+            function showSignUp() {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('signup-form').style.display = 'block';
+            }
+
+            // Function to show the Sign In form
+            function showSignIn() {
+                document.getElementById('signup-form').style.display = 'none';
+                document.getElementById('login-form').style.display = 'block';
+            }
+
+            // Add event listener to the login form after DOM is fully loaded
+            const loginForm = document.getElementById("login-form");
+            if (loginForm) {
+                loginForm.addEventListener("submit", function (event) {
+                    event.preventDefault();  // Prevent form submission
+
+                    const username = document.getElementById("username").value;
+                    const password = document.getElementById("password").value;
+
+                    fetch("/login", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username: username,
+                            password: password
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log("Parsed JSON:", data);
+                            if (data.success) {
+                                sessionStorage.setItem("loggedIn", "true");  // ✅ Set session
+                                window.location.href = "/timer";
+                            } else {
+                                alert("Invalid login credentials");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error during fetch:", error);
+                            alert("An error occurred. Please try again.");
+                        });
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
